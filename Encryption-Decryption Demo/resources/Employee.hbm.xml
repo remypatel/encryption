@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8'?>  
+<!DOCTYPE hibernate-mapping PUBLIC  
+ "-//Hibernate/Hibernate Mapping DTD 3.0//EN"  
+ "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">  
+  
+ <hibernate-mapping>  
+  <typedef name="encrypted" class="org.jasypt.hibernate4.type.EncryptedStringType">
+      <param name="encryptorRegisteredName">strongHibernateStringEncryptor</param>
+    </typedef>
+    <typedef name="encryptedInteger" class="org.jasypt.hibernate4.type.EncryptedIntegerAsStringType">
+      <param name="encryptorRegisteredName">strongHibernateIntegerEncryptor</param>
+    </typedef>
+  <class name="com.citi.Entity.Employee" table="emp1000">  
+    <id name="id" column="Id">  
+     <generator class="assigned"></generator>  
+    </id>  
+            
+    <property name="name" column="Name" type="encrypted" ></property>  
+    <property name="salary" column="Salary" type="encryptedInteger"></property>  
+            
+  </class>  
+            
+ </hibernate-mapping>  
